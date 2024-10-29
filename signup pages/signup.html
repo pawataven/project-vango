@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="./signup.css">
+
+    <title>Signup pages</title>
+</head>
+<body>
+    <div class="background-overlay"></div>
+
+    <div class="warpper">
+        <div class="logo">
+            <img src="./img/van (1).png" alt="vanlogo">
+        </div>
+        <h1>สมัครผู้ใช้ระบบ</h1>
+
+        <form action="#"> <!-- action ใช้เชื่อม php-->
+            <div>
+                <label for="Username">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30" enable-background="new 0 0 512 512" viewBox="0 0 512 512" id="user">
+                        <circle cx="256.1" cy="128.6" r="128.6" fill="#00000" transform="rotate(-45.001 256.1 128.604)"></circle>
+                        <path fill="#00000" d="M403.6,364.5c-9.9-9.9-63.1-61.1-147.5-61.1s-137.7,51.3-147.5,61.1C48.9,424.2,47.5,498.1,47.5,512h417.2
+                                C464.7,498.1,463.3,424.2,403.6,364.5z"></path>
+                    </svg>
+                </label>
+                <input required type="text" name="Username" placeholder="ชื่อผู้ใช้งาน" id="FirstName_Input">
+            </div>
+
+            <div>
+                <label for="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30" xml:space="preserve" viewBox="0 0 20 20" id="email">
+                        <path d="M14.608 12.172c0 .84.239 1.175.864 1.175 1.393 0 2.28-1.775 2.28-4.727 0-4.512-3.288-6.672-7.393-6.672-4.223 0-8.064 2.832-8.064 8.184 0 5.112 3.36 7.896 8.52 7.896 1.752 0 2.928-.192 4.727-.792l.386 1.607c-1.776.577-3.674.744-5.137.744-6.768 0-10.393-3.72-10.393-9.456 0-5.784 4.201-9.72 9.985-9.72 6.024 0 9.215 3.6 9.215 8.016 0 3.744-1.175 6.6-4.871 6.6-1.681 0-2.784-.672-2.928-2.161-.432 1.656-1.584 2.161-3.145 2.161-2.088 0-3.84-1.609-3.84-4.848 0-3.264 1.537-5.28 4.297-5.28 1.464 0 2.376.576 2.782 1.488l.697-1.272h2.016v7.057h.002zm-2.951-3.168c0-1.319-.985-1.872-1.801-1.872-.888 0-1.871.719-1.871 2.832 0 1.68.744 2.616 1.871 2.616.792 0 1.801-.504 1.801-1.896v-1.68z"></path>
+                      </svg>
+                </label>
+                <input required type="text" name="Email" placeholder="อีเมล์ผู้ใช้งาน" id="Email_Input">
+            </div>
+
+            <div>
+                <label for="password">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" id="password">
+                        <g>
+                          <path d="M19,20H5a4,4,0,0,1-4-4V12A4,4,0,0,1,5,8H19a4,4,0,0,1,4,4v4A4,4,0,0,1,19,20ZM5,10a2,2,0,0,0-2,2v4a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V12a2,2,0,0,0-2-2Z"></path>
+                          <path d="M19,10H5V8A7,7,0,0,1,19,8ZM7,8H17A5,5,0,0,0,7,8Z"></path>
+                          <path d="M19,9H5a3,3,0,0,0-3,3v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V12A3,3,0,0,0,19,9ZM6,15a1,1,0,1,1,1-1A1,1,0,0,1,6,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,10,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,14,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,18,15Z"></path>
+                        </g>
+                      </svg>
+                </label>
+                <input required type="password" name="Password" placeholder="กำหนดรหัสผ่าน" id="Password_Input">
+            </div>
+            
+            <div>
+                <label for="conpass">
+                    <?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 48 48"><title>Protection And Security vol.1</title><g id="Layer_10" data-name="Layer 10"><path d="M44.2373,10.665,24.47363,1.26074a1.00435,1.00435,0,0,0-.85058-.0039L14.68457,5.40625,6.38184,9.39844,3.832,10.67383a1.00049,1.00049,0,0,0-.53906.72949c-.12891.76758-3.04883,18.91113,5.4873,28.99512,3.61524,4.27148,8.751,6.4375,15.26368,6.4375,7.93359,0,13.96875-3.376,17.43359-9.72852a19.84731,19.84731,0,0,0,2.17969-5.51367C46.38965,22.249,44.8623,11.85645,44.7959,11.419A.99713.99713,0,0,0,44.2373,10.665ZM41.73242,31.05078l-.00976.03809a18.07183,18.07183,0,0,1-1.98047,5.02539C36.585,41.90137,31.30273,44.83594,24.044,44.83594c-5.89551,0-10.51563-1.92676-13.73438-5.72559C3.11816,30.61914,4.793,15.18652,5.19336,12.22949l10.3457-5.01465,8.5-3.94629L42.88672,12.2373C43.1543,14.44531,44.00977,23.2793,41.73242,31.05078Z"/><path d="M30.40332,18.06738l-9.74414,9.74414-3.0625-3.0625a.99989.99989,0,1,0-1.41406,1.41407l3.76953,3.76953a.99963.99963,0,0,0,1.41406,0L31.81738,19.48145a.99989.99989,0,1,0-1.41406-1.41407Z"/></g></svg>
+                </label>
+                <input required type="password" name="Password" placeholder="ยืนยันรหัสผ่าน" id="ComfirmPass_Input">
+            </div>
+            <button class="submit_signup" type="submit">ยืนยันการสมัคร</button>
+        </form>
+        <i class="recommand">คุณมีบัญชีผู้ใช้งานอยู่เเล้วใช่หรือไม่ ? <a href="../login pages/login.html" style="color: #001c55;" >คลิ๊ก 👈</a></i> <!-- a link กับ หน้า login-->
+    </div>
+
+    <!-- เพิ่มข้อความที่จะแปะในรูปพื้นหลังด้านขวา -->
+    <div class="text-overlay">
+        <h1 style="font-size: 130px; color: #efefd0;">มากกว่ารถตู้</h1>
+        
+    </div>
+
+    <div class="text-overlay-second">
+        <h1 style="font-size: 125px; color: #ffbc42; ">"คือเพื่อนร่วมทาง"</h1>
+    </div>
+</body>
+</html>

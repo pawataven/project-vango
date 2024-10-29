@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --fntMainColor: #000000;
+    --bgColor: #FBFCF8;
+    --BtnColor: #0a2472;
+    --BtnsecondColor: #001c55;
+    --baseWhiteColor: #ffff;
+    --fntsecond: #6b717f;
+}
+
+*{
+    margin:0%;
+    padding: 0%;
+    text-decoration: none;
+}
+
+
+body {
+    font-family: "Noto Sans Thai Looped", sans-serif;
+    font-size: 14px;
+    background-color: var(--bgColor);
+    color: var(--fntMainColor);
+    min-height: 100vh;
+    background-image: url(./img/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ\ \(3\).png);
+    background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+html {
+    text-align: center;
+}
+
+.logo img {
+    height: 250px;
+}
+
+
+
+.warpper{
+    background-color: var(--bgColor);
+    height: 100vh;
+    width: max(600px,40%);
+    padding: 10px;
+    border-radius: 0px 20px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+form {
+    width: min(400px, 100%);
+    margin-top: 20px;
+    margin-bottom: 50px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+form div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form label{
+    
+    height: 50px; /*ขนาด input ก็ต้องเท่ากันไม่งั้นไม่สวย เละ*/
+    width: 50px; /*ขนาด input ก็ต้องเท่ากันไม่งั้นไม่สวย เละ*/
+    background-color: var(--BtnsecondColor);
+    fill: var(--baseWhiteColor);
+    color: #0a2472;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+form input{
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    height: 50px; /*ขนาด input ก็ต้องเท่ากันไม่งั้นไม่สวย เละ*/
+    padding: 16px;
+    font: inherit;
+    border-radius: 0px 10px 10px 0px;
+    transition: 1500ms ;
+    background-color: var(--baseWhiteColor);
+    border: 2px  solid var(--BtnsecondColor);
+    border-left: none;
+    font-size: 16px;
+    
+    
+    
+}
+
+form input:hover{
+   border-color: var(--BtnColor);
+}
+
+form input::placeholder{
+    color: var(--fntsecond) ;
+    opacity: 10;
+}
+
+form button{
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    border: none;
+    padding: 0.85em 7em;
+    border-radius: 100px;
+    background-color: var(--BtnColor);
+    color: var(--baseWhiteColor);
+    cursor: pointer;
+}
+
+form button:hover{
+    background-color: #ffc300;
+    transition: 800ms ;
+}
+
+/* สำหรับการวางข้อความทางด้านขวาของพื้นหลัง */
+.text-overlay {
+    position: fixed;
+    right: 320px; /* จัดตำแหน่งข้อความให้ชิดขอบขวา */
+    top: 45%; /* จัดให้อยู่กลางด้านบน-ล่าง */
+    transform: translateY(-50%); /* แปลงให้ข้อความอยู่ตรงกลางพอดี */
+    color: white; /* เปลี่ยนสีข้อความ */
+    max-width: 100%; /* ขยายความกว้างข้อความ */
+    text-align: left;
+    font-weight: bold; /* ทำให้ตัวหนังสือหนาขึ้น */
+    
+}
+
+.text-overlay-second {
+    position: fixed;
+    right: 50px; /* จัดตำแหน่งข้อความให้ชิดขอบขวา */
+    top: 65%; /* จัดให้อยู่กลางด้านบน-ล่าง */
+    transform: translateY(-50%); /* แปลงให้ข้อความอยู่ตรงกลางพอดี */
+    color: white; /* เปลี่ยนสีข้อความ */
+    max-width: 100%; /* ขยายความกว้างข้อความ */
+    text-align: left;
+    font-weight: bold; /* ทำให้ตัวหนังสือหนาขึ้น */
+}
+
+.text-overlay, .text-overlay-second {
+    position: absolute;
+    z-index: 2; /* ให้อยู่เหนือเลเยอร์สีดำ */
+    color: white;
+    text-align: center;
+}
