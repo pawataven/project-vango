@@ -1,0 +1,235 @@
+<!-- 
+<?php
+session_start();
+
+// ตรวจสอบว่ามีการล็อกอินหรือไม่
+if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
+    exit();
+}
+
+require 'server.php'; // ไฟล์เชื่อมต่อฐานข้อมูล
+
+$username = $_SESSION['username'];
+
+// ฟังก์ชันลบประวัติการจอง
+if (isset($_POST['delete_history'])) {
+    // อัปเดตข้อมูลจากแต่ละตารางแยกกัน
+    $update_query_chachoengsao = "UPDATE bus_seats_chachoengsao SET booked_by = NULL, booking_time = NULL, destination = NULL WHERE booked_by = '$username'";
+    $update_query_nakhon_pathom = "UPDATE bus_seats_nakhon_pathom SET booked_by = NULL, booking_time = NULL, destination = NULL WHERE booked_by = '$username'";
+    $update_query_chonburi = "UPDATE bus_seats SET booked_by = NULL, booking_time = NULL, destination = NULL WHERE booked_by = '$username'";
+
+    // เรียกใช้ query ทีละคำสั่ง
+    mysqli_query($conn, $update_query_chachoengsao);
+    mysqli_query($conn, $update_query_nakhon_pathom);
+    mysqli_query($conn, $update_query_chonburi);
+
+    echo "<script>alert('ลบประวัติการจองเรียบร้อยแล้ว');</script>";
+}
+
+// ดึงข้อมูลการจอง
+$query = "
+    SELECT seat_number, is_booked, booking_time, 'Chachoengsao' AS destination FROM bus_seats_chachoengsao WHERE booked_by = '$username'
+    UNION
+    SELECT seat_number, is_booked, booking_time, 'Nakhon Pathom' AS destination FROM bus_seats_nakhon_pathom WHERE booked_by = '$username'
+    UNION
+    SELECT seat_number, is_booked, booking_time, 'Chonburi' AS destination FROM bus_seats WHERE booked_by = '$username'
+";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn)); // ตรวจสอบการทำงานของ query
+}
+ -->
+
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./history.css" />
+
+    <title>ประวัติการจอง</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">VanGOo</a>
+
+        <div class="nav__menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#" class="nav__link">หน้าหลัก</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">ตารางเดินรถ</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">วิธีการใช้งาน</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">ติดต่อเรา</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav__actions">
+          <i class="ri-user-line nav__login" id="login-btn">
+            ยินดีต้อนรับคุณ ******
+          </i>
+        </div>
+
+        <div class="lan">
+          <a href="#"><img src="./img/thai.png" alt="" title="ภาษาไทย" /></a>
+        </div>
+      </nav>
+    </header>
+
+    <!--!Card-->
+
+
+    <section class="table-body">
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <h1>ประวัติการจองของท่าน</h1>
+                <div class="input-group">
+                    <input type="search" placeholder="ค้นหาประวัติ...">
+                    <img src="./images/find.png" alt="">
+                </div>
+                <div class="export__file">
+                    <label for="export-file" class="export__file-btn" title="Export File"></label>
+                    <input type="checkbox" id="export-file">
+                    <div class="export__file-options">
+                        <label>ส่งออกประวัติ &nbsp; &#10140;</label>
+                        <label for="export-file" id="toPDF">PDF<img src="images/pdf.png" alt=""></label>
+                    </div>
+                </div>
+            </section>
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>หมายเลขที่นั่ง</th>
+                            <th>สถานะการจอง</th>
+                            <th>เวลาในการจอง</th>
+                            <th>จุดหมายปลายทาง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                        <tr>
+                                <td><?php echo $row['seat_number']; ?></td>
+                                <td><?php echo $row['is_booked'] ? '<p class="status successfully">จองแล้ว</p>' : '<p class="status cancelledd">ยังไม่จอง</p>'; ?></td>
+                                <td><?php echo $row['booking_time']; ?></td>
+                                <td><?php echo $row['destination']; ?></td> <!-- แสดงผลจุดหมายปลายทาง -->
+                            </tr>
+                            <?php endwhile; ?>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <script src="./script.js"></script>
+    </section>
+
+    <!-- Footer -->
+    <div class="mainfooter"></div>
+    <section class="section_footer">
+      <div class="container_footer">
+        <div class="row">
+          <div class="logo_footer">
+            <h2>VanGOo</h2>
+            <p>
+              เราคือเว็บไซต์ให้บริการจองที่นั่งรถตู้ผ่านช่องทางออนไลน์ที่สะดวกสบายและมีความปลอดภัยที่สุดไม่ว่าจะเป็นข้อมูลส่วนตัว
+              ข้อมูลการชำระเงิน
+              อีกทั้งเรามีการบริการที่สามารถติดต่อสอบถามได้ตลอด 24 ชม.
+            </p>
+            <img src="./payment-card.png" alt="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="links">
+            <h3>การให้บริการ</h3>
+            <ul>
+              <li>
+                <i class="fa-solid fa-caret-right"></i> <a href="#">หน้าหลัก</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-caret-right"></i> <a href="#">ตารางรถ</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-caret-right"></i>
+                <a href="#">จัดการการจอง</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="links">
+            <h3>ช่วยเหลือ</h3>
+            <ul>
+              <li>
+                <i class="fa-solid fa-caret-right"></i>
+                <a href="#">ติดต่อเรา</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-caret-right"></i>
+                <a href="#">เกี่ยวกับเรา</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="links contact">
+            <h3>ติดตามข่าวสาร</h3>
+            <div class="social">
+              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-twitter"></i>
+            </div>
+            <h3>ช่องทางชำระเงิน</h3>
+            <i><img src="./img/scb (1).png" alt="" /></i>
+            <i><img src="./img/kbank.png" alt="" /></i>
+            <i><img src="./img/visa.png" alt="" /></i>
+            <br />
+            <i><img src="./img/mc.png " alt="" /></i>
+            <i><img src="./img/7-11.png" alt="" /></i>
+            <i><img src="./img/cts.png" alt="" /></i>
+          </div>
+        </div>
+        <div class="copyright_tag">
+          <p>Copyright ©2024 PowerSystem By หนองอีกึ่มTeam</p>
+          <i class="v">Version 0.0.1</i>
+        </div>
+      </div>
+    </section>
+
+    
+  </body>
+</html>
