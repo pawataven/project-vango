@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="./login.css">
+
+    <title>Login pages</title>
+</head>
+<body>
+    <div class="background-overlay"></div>
+
+    <div class="warpper">
+        <div class="logo">
+            <img src="./img/van (1).png" alt="vanlogo">
+        </div>
+        <p>ยินดีต้อนรับ 👋</p>
+        <h1>ลงชื่อเข้าใช้งาน</h1>
+
+        <form action="#"> <!-- action ใช้เชื่อม php-->
+            <div>
+                <label for="Username">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30" enable-background="new 0 0 512 512" viewBox="0 0 512 512" id="user">
+                        <circle cx="256.1" cy="128.6" r="128.6" fill="#00000" transform="rotate(-45.001 256.1 128.604)"></circle>
+                        <path fill="#00000" d="M403.6,364.5c-9.9-9.9-63.1-61.1-147.5-61.1s-137.7,51.3-147.5,61.1C48.9,424.2,47.5,498.1,47.5,512h417.2
+                                C464.7,498.1,463.3,424.2,403.6,364.5z"></path>
+                    </svg>
+                </label>
+                <input required type="text" name="Username" placeholder="ชื่อผู้ใช้งาน" id="FirstName_Input">
+            </div>
+
+            <div>
+                <label for="password">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" id="password">
+                        <g>
+                          <path d="M19,20H5a4,4,0,0,1-4-4V12A4,4,0,0,1,5,8H19a4,4,0,0,1,4,4v4A4,4,0,0,1,19,20ZM5,10a2,2,0,0,0-2,2v4a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V12a2,2,0,0,0-2-2Z"></path>
+                          <path d="M19,10H5V8A7,7,0,0,1,19,8ZM7,8H17A5,5,0,0,0,7,8Z"></path>
+                          <path d="M19,9H5a3,3,0,0,0-3,3v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V12A3,3,0,0,0,19,9ZM6,15a1,1,0,1,1,1-1A1,1,0,0,1,6,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,10,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,14,15Zm4,0a1,1,0,1,1,1-1A1,1,0,0,1,18,15Z"></path>
+                        </g>
+                      </svg>
+                </label>
+                <input required type="password" name="Password" placeholder="กำหนดรหัสผ่าน" id="Password_Input">
+            </div>
+            
+            <button class="submit_signup" type="submit">เข้าสู่ระบบ</button>
+        </form>
+        <i class="recommand">คุณยังไม่มีบัญชีผู้ใช้งานใช่หรือไม่ ? <a href="../signup pages/signup.html" style="color: #001c55;" >คลิ๊ก👇</a></i> <!-- a link กับ หน้า login-->
+    </div>
+
+    <!-- เพิ่มข้อความที่จะแปะในรูปพื้นหลังด้านขวา -->
+    <div class="text-overlay">
+        <h1 style="font-size: 130px; color: #efefd0;">มากกว่ารถตู้</h1>
+        
+    </div>
+
+    <div class="text-overlay-second">
+        <h1 style="font-size: 125px; color: #ffbc42; ">"คือเพื่อนร่วมทาง"</h1>
+    </div>
+</body>
+</html>
